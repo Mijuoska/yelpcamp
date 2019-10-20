@@ -10,7 +10,16 @@ var express =           require("express"),
     Campground = require("./models/campground"),
     User     =          require("./models/user"),
     Comment = require("./models/comment"),
-    seedDB  = require("./seeds")
+    seedDB  = require("./seeds"),
+    customenv = require('custom-env').env('staging')
+    app.locals.moment = require('moment')
+    port = process.env.PORT || 3000;
+
+
+console.log(process.env.APP_ENV)
+
+console.log(process.env.APP_NAME)
+
     
 var commentRoutes = require("./routes/comments"),
     campgroundRoutes = require("./routes/campgrounds"),
@@ -66,9 +75,10 @@ app.use("/campgrounds", campgroundRoutes);
 app.use("/campgrounds/:id/comments",commentRoutes);
 
 
-app.listen(process.env.PORT, process.env.IP, function(){
+
+
+
+app.listen(port, function(){
    console.log("Yelp Camp is running!") 
-   
-  
     
 });
