@@ -3,7 +3,7 @@
     <div class="row">
         <div class="col-md-3">
             
-            <p class="lead">YelpCamp</p>
+            <p class="lead">Learn more about this campground</p>
             <div class="list-group">
                 <li class="list-group-item active" id="list-info-1">Location</li>
                                 <li class="list-group-item" id="list-info-2">Hiking Trails</li>
@@ -12,9 +12,12 @@
             </div>
 
             <div class="info-text">
-            <div class="info info-show" id="info-1">Text for info 1</div>
-                        <div class="info info-hide" id="info-2">Text for info 2</div>
-            <div class="info info-hide" id="info-3">Text for info 3</div>
+            <div class="info info-show" id="info-1"> No information available yet
+            
+
+            </div>
+                        <div class="info info-hide" id="info-2">No information available yet</div>
+            <div class="info info-hide" id="info-3">No information available yet</div>
 </div>
 
         </div>
@@ -38,10 +41,13 @@
             </div>
             
             <div class="well">
+                <% if (currentUser) { %>
                 <div class="text-right">
-            
+          
              <a class="btn btn-success" href="/campgrounds/<%= campground._id %>/comments/new">Add New Comment</a>
-                </div>
+          
+            </div>
+            <% } %>
                 <hr>
                         <% campground.comments.forEach(function(comment) { %>
                         <div class="row">
@@ -107,7 +113,6 @@
          el.classList.remove('info-hide');
         el.classList.add('info-show');
     }
-
 
 </script>
 
