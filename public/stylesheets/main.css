@@ -9,3 +9,17 @@
 .deleteForm {
     display: inline;
 }
+
+.info-text {
+    padding-bottom: 2rem;
+}
+
+.info-show {
+    display: block;
+
+}
+
+.info-hide {
+    display: none;
+
+}

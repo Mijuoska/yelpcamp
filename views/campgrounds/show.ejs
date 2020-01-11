@@ -5,11 +5,18 @@
             
             <p class="lead">YelpCamp</p>
             <div class="list-group">
-                <li class="list-group-item active">info 1</li>
-                                <li class="list-group-item">info 2</li>
-                <li class="list-group-item">info 2</li>
+                <li class="list-group-item active" id="list-info-1">Location</li>
+                                <li class="list-group-item" id="list-info-2">Hiking Trails</li>
+                <li class="list-group-item" id="list-info-3">Accommodation</li>
 
             </div>
+
+            <div class="info-text">
+            <div class="info info-show" id="info-1">Text for info 1</div>
+                        <div class="info info-hide" id="info-2">Text for info 2</div>
+            <div class="info info-hide" id="info-3">Text for info 3</div>
+</div>
+
         </div>
         <div class="col-md-9">
             
@@ -70,7 +77,39 @@
     </div>
     </div>
 
+<script>
 
+    var listItems = document.getElementsByClassName('list-group-item');
+    // make items clickable
+    Array.prototype.forEach.call(listItems, function (item) {
+        item.addEventListener('click', function (e) {
+            for (var i = 0; i < listItems.length; i++) {
+                listItems[i].classList.remove('active');
+            }
+            e.target.classList.toggle('active')
+           // console.log(e.target.id)
+            showInfo(e.target.id)
+
+        });
+
+    });
+
+    function showInfo(id) {
+        id = id.replace('list-', '')
+        // hide all the other elements
+        var infoboxes = document.getElementsByClassName('info');
+        for (var i = 0; i < infoboxes.length; i++) {
+            if (infoboxes[i].classList.value == 'info-show')
+                infoboxes[i].classList.remove('info-show');
+                 infoboxes[i].classList.add('info-hide')
+        }
+        var el = document.getElementById(id);
+         el.classList.remove('info-hide');
+        el.classList.add('info-show');
+    }
+
+
+</script>
 
 
 
