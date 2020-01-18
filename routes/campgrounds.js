@@ -2,6 +2,7 @@ var express = require("express"),
     router = express.Router(),
     Campground = require("../models/campground"),
     middleware = require("../middleware")
+    slugify = require("slugify")
 
 //var campgrounds = [ {name: "Salmon Creek", image: "https://pixabay.com/get/e837b1072af4003ed1584d05fb1d4e97e07ee3d21cac104496f9c07ea3edb3bf_340.jpg"},
         //  {name: "Granite Hill", image: "https://pixabay.com/get/e83db40e28fd033ed1584d05fb1d4e97e07ee3d21cac104496f9c07ea3edb3bf_340.jpg"},
@@ -32,7 +33,7 @@ router.post("/", middleware.isLoggedIn, function(req, res){
           id: req.user._id,
           username: req.user.username
       }
-      var newCampground = {name: name, price: price, image: image, description: desc, author: author}
+      var newCampground = {name: name, price: price, image: image, description: desc, slug: slugify(name), author: author}
 // Create a new campground and save to database
 Campground.create(newCampground, function(err, newlyCreated){
     if(err) {
