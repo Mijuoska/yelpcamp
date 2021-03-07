@@ -5,19 +5,19 @@
             
             <p class="lead">Learn more about this campground</p>
             <div class="list-group">
-                <li class="list-group-item active" id="list-info-1">Location</li>
-                                <li class="list-group-item" id="list-info-2">Hiking Trails</li>
-                <li class="list-group-item" id="list-info-3">Accommodation</li>
+                <li class="list-group-item active" id="list-info-location">Location</li>
+                                <li class="list-group-item" id="list-info-hiking_trails">Hiking Trails</li>
+                <li class="list-group-item" id="list-info-accommodation">Accommodation</li>
 
             </div>
 
             <div class="info-text">
-            <div class="info info-show" id="info-1"> No information available yet
+            <div class="info info-show" id="location"> <%= campground.location %>
             
 
             </div>
-                        <div class="info info-hide" id="info-2">No information available yet</div>
-            <div class="info info-hide" id="info-3">No information available yet</div>
+                        <div class="info info-hide" id="hiking_trails"><%= campground.hiking_trails  %> </div>
+            <div class="info info-hide" id="accommodation"><%= campground.accommodation %></div>
 </div>
 
         </div>
@@ -93,7 +93,6 @@
                 listItems[i].classList.remove('active');
             }
             e.target.classList.toggle('active')
-           // console.log(e.target.id)
             showInfo(e.target.id)
 
         });
@@ -101,7 +100,7 @@
     });
 
     function showInfo(id) {
-        id = id.replace('list-', '')
+        id = id.replace('list-info-', '')
         // hide all the other elements
         var infoboxes = document.getElementsByClassName('info');
         for (var i = 0; i < infoboxes.length; i++) {
